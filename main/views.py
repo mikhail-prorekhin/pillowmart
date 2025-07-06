@@ -2,21 +2,16 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-def index(request, page_title="Home 11", show_sidebar=True) :
+def index(request) :
     context = {
-        'title': page_title,
-        'show_sidebar': show_sidebar
+        'title': "Home",
     }
     return render(request, 'main/index.html', context)
 
 
-def about(request, company_name="Our Company", year_founded=2000) :
-    """
-    Render the about page.
-    """
+def about(request) :
     context = {
-        'company_name': company_name,
-        'year_founded': year_founded
+        'title': "About",
     }
     return render(request, 'main/about.html', context)
 
@@ -31,13 +26,6 @@ def about(request, company_name="Our Company", year_founded=2000) :
 #     }
 #     return render(request, 'main/contacts.html', context)    return render(request, 'main/index.html', context)
    
-
-# def about(request) :
-#     """
-#     Render the about page.
-#     """
-#     # return render(request, 'main/about.html')
-#     return HttpResponse('About us page')
 
 
 # def contacts(request) :
