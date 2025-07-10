@@ -1,6 +1,8 @@
 
 {% extends "main/base.html" %}
 {% load static %}
+{% load  products_tags %}
+
 {% block content %}
    <!-- breadcrumb part start-->
     <section class="breadcrumb_part">
@@ -32,6 +34,7 @@
                             <div class="select_option">
                                 <div class="select_option_list">Category <i class="right fas fa-caret-down"></i> </div>
                                 <div class="select_option_dropdown">
+                                    {% tag_categories as categories %}
                                     {% for category in categories %}
                                         <p><a href="#">{{category.name}}</a></p>
                                     {% endfor %}

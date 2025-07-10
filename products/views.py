@@ -8,14 +8,6 @@ def index(request):
     context = {
         "title": "product list",
         "products": products,
-        # {
-        #     "id": 20,
-        #     "title": "Anti-Snore Pillow",
-        #     "description": "Specially designed to reduce snoring",
-        #     "price": 69.99,
-        #     "image": "img/product/product_list_10.png",
-        # },
-        "categories": Categories.objects.all(),
     }
     return render(request, "products/catalog.html", context)
 
