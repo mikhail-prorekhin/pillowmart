@@ -23,7 +23,7 @@ class Products(models.Model):
     )
     description = models.TextField(blank=True, null=True, verbose_name="Description")
     image = models.ImageField(
-        upload_to="product_images", blank=True, null=True, verbose_name="Image"
+        upload_to="products_images", blank=True, null=True, verbose_name="Image"
     )
     price = models.DecimalField(
         default=0.00, max_digits=7, decimal_places=2, verbose_name="Price"
