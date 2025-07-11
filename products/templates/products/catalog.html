@@ -54,7 +54,7 @@
                                         {% else %}
                                             <img src="{% static "img/product/Not_found_image.png" %}" alt="{{ product.name }}" class="img-fluid">
                                         {% endif %}
-                                        <h3> <a href="single-product.html">{{product.description}}</a> </h3>
+                                        <h3> <a href="{% url "catalog:product" product.slug %}">{{product.description}}</a> </h3>
                                         <p>From ${{product.price}}</p>
                                     </div>
                                 </div>

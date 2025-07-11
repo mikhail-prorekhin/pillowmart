@@ -22,9 +22,23 @@ class Products(models.Model):
         max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
     )
     description = models.TextField(blank=True, null=True, verbose_name="Description")
+    full_description = models.TextField(
+        blank=True, null=True, verbose_name="Full Description"
+    )
     image = models.ImageField(
         upload_to="products_images", blank=True, null=True, verbose_name="Image"
     )
+
+    big_image_1 = models.ImageField(
+        upload_to="products_images", blank=True, null=True, verbose_name="Big Image 1"
+    )
+    big_image_2 = models.ImageField(
+        upload_to="products_images", blank=True, null=True, verbose_name="Big Image 2"
+    )
+    big_image_3 = models.ImageField(
+        upload_to="products_images", blank=True, null=True, verbose_name="Big Image 3"
+    )
+
     price = models.DecimalField(
         default=0.00, max_digits=7, decimal_places=2, verbose_name="Price"
     )

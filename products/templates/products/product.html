@@ -22,23 +22,46 @@
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="product_img_slide owl-carousel">
-            <div class="single_product_img">
-              <img src={% static "img/product/single_product.png" %} alt="#" class="img-fluid">
+            {% comment %} <div class="single_product_img">
+                {% if product.big_image_1 %}
+                    <img src="{{ product.big_image_1.url }}"  alt="{{ product.name }}" class="img-fluid">
+                {% else %}
+                    <img src="{% static "img/product/Not_found_image.png" %}" alt="{{ product.name }}" class="img-fluid">
+                {% endif %}
             </div>
             <div class="single_product_img">
-              <img src={% static "img/product/single_product.png" %} alt="#" class="img-fluid">
+                {% if product.big_image_2 %}
+                    <img src="{{ product.big_image_2.url }}"  alt="{{ product.name }}" class="img-fluid">
+                {% else %}
+                    <img src="{% static "img/product/Not_found_image.png" %}" alt="{{ product.name }}" class="img-fluid">
+                {% endif %}
             </div>
             <div class="single_product_img">
-              <img src={% static "img/product/single_product.png" %} alt="#" class="img-fluid">
-            </div>
+                {% if product.big_image_3 %}
+                    <img src="{{ product.big_image_3.url }}"  alt="{{ product.name }}" class="img-fluid">
+                {% else %}
+                    <img src="{% static "img/product/Not_found_image.png" %}" alt="{{ product.name }}" class="img-fluid">
+                {% endif %}
+            </div> {% endcomment %}
+              {% for image in images %}
+                <div class="single_product_img">
+                  {% if image %}
+                    <img src="{{ image.url }}" alt="{{ product.name }}" class="img-fluid">
+                  {% else %}
+                    <img src="{% static 'img/product/Not_found_image.png' %}" alt="{{ product.name }}" class="img-fluid">
+                  {% endif %}
+                </div>
+              {% endfor %}
           </div>
         </div>
         <div class="col-lg-8">
           <div class="single_product_text text-center">
-            <h3>Foam filling cotton slow <br>
-                rebound pillows</h3>
+            <h3>{{product.description}}</h3>
             <p>
-                Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources. Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas. with optimal networks.
+                {% if product.full_description %}
+                    {{product.full_description}}
+                {% endif %}
+                
             </p>
             <div class="card_area">
                 <div class="product_count_area">
@@ -48,7 +71,7 @@
                         <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
                         <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
                     </div>
-                    <p>$5</p>
+                    <p>${{product.price}}</p>
                 </div>
               <div class="add_to_cart">
                   <a href="#" class="btn_3">add to cart</a>

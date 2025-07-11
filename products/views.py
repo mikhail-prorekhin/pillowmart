@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, render
 from products.models import Categories, Products
 
 
-def index(request):
+def catalog(request, category_slug=None):
+    print("Category slug:", category_slug)
+    if category_slug == None:
+        products = Products.objects.all().order_by("-id")
+    else:
+        products = get_list_or_404(
+            Products.objects.filter(category__slug=category_slug)
+        )
 
-    products = Products.objects.all().order_by("-id")
     context = {
         "title": "product list",
         "products": products,
@@ -12,8 +18,15 @@ def index(request):
     return render(request, "products/catalog.html", context)
 
 
-def product(request):
+def product(request, product_slug):
+    product = Products.objects.get(slug=product_slug)
     context = {
         "title": "Product details",
+        "product": product,
+        "images": (
+            product.big_image_1,
+            product.big_image_2,
+            product.big_image_3,
+        ),
     }
-    return render(request, "products/catalog.html", context)
+    return render(request, "products/product.html", context)
