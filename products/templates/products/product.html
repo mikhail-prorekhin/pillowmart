@@ -48,7 +48,12 @@
                   {% if image %}
                     <img src="{{ image.url }}" alt="{{ product.name }}" class="img-fluid">
                   {% else %}
-                    <img src="{% static 'img/product/Not_found_image.png' %}" alt="{{ product.name }}" class="img-fluid">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                    {% else %}
+                        <img src="{% static 'img/product/Not_found_image.png' %}" alt="{{ product.name }}" class="img-fluid">
+                    {% endif %}
+                   
                   {% endif %}
                 </div>
               {% endfor %}
@@ -56,10 +61,12 @@
         </div>
         <div class="col-lg-8">
           <div class="single_product_text text-center">
-            <h3>{{product.description}}</h3>
+            <h3>{{product.name}}</h3>
             <p>
                 {% if product.full_description %}
                     {{product.full_description}}
+                {% else %}
+                    {{product.description}}
                 {% endif %}
                 
             </p>
